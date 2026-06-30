@@ -72,6 +72,7 @@ interface State {
   syncMissed: () => void
   profile: () => BehaviorProfile
   seedDemo: () => void
+  startClean: () => void
 }
 
 const defaultSettings: Settings = {
@@ -304,6 +305,21 @@ export const useStore = create<State>()(
       },
 
       profile: () => summarizeBehavior(get().events),
+
+      startClean: () => {
+        set({
+          tasks: [],
+          goals: [],
+          plan: null,
+          thoughts: [],
+          reflection: null,
+          lastRanking: {},
+          events: [],
+          missedIds: [],
+          focusTaskId: null,
+          mode: 'dashboard',
+        })
+      },
 
       seedDemo: () => {
         const t = now()

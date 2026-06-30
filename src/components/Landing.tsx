@@ -50,9 +50,13 @@ const CAPS = [
 ]
 
 export default function Landing() {
-  const { setEntered, seedDemo } = useStore()
+  const { setEntered, seedDemo, startClean } = useStore()
   const enter = (demo: boolean) => {
-    if (demo) seedDemo()
+    if (demo) {
+      seedDemo()
+    } else {
+      startClean()
+    }
     setEntered(true)
   }
 
