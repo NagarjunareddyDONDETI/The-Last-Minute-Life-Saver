@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RESCUE — Landing Variations Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  :root { color-scheme: dark; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Sora',sans-serif; background:#050509; color:#e7e9ff; padding:32px; }
+  h1 { font-family:'Space Grotesk'; font-size:30px; font-weight:800; letter-spacing:-.02em; }
+  .sub { color:rgba(231,233,255,.55); margin:8px 0 28px; font-size:15px; max-width:680px; line-height:1.6; }
+  .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+  .card { border:1px solid rgba(255,255,255,.1); border-radius:18px; overflow:hidden; background:#0b0b14; }
+  .head { display:flex; align-items:center; gap:10px; padding:14px 18px; border-bottom:1px solid rgba(255,255,255,.08); }
+  .head b { font-family:'Space Grotesk'; font-size:16px; }
+  .head .tag { font-size:12px; color:rgba(231,233,255,.5); }
+  .head a { margin-left:auto; font-size:13px; color:#c4b5fd; text-decoration:none; border:1px solid rgba(139,92,246,.4); padding:6px 12px; border-radius:8px; transition:background .2s; }
+  .head a:hover { background:rgba(139,92,246,.18); }
+  .frame { position:relative; width:100%; height:560px; overflow:hidden; background:#000; }
+  .frame iframe { width:1280px; height:1494px; border:0; transform:scale(.5); transform-origin:top left; }
+  @media (max-width:1000px){ .grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+  <h1>RESCUE — Landing variations</h1>
+  <p class="sub">Four on-brand directions grounded in the ui-ux-pro-max design system (Liquid Glass · Inter · urgency/countdown pattern). Previews are scaled to 50%; click "Open full" to view any at true size and pick the strongest.</p>
+  <div class="grid">
+    <div class="card" style="grid-column:1 / -1">
+      <div class="head"><b>★ Flagship · Framer/Notion style</b><span class="tag">premium light · Space Grotesk + DM Sans · scroll motion</span><a href="rescue-framer.html" target="_blank">Open full →</a></div>
+      <div class="frame" style="height:620px"><iframe src="rescue-framer.html" loading="lazy" title="Framer flagship"></iframe></div>
+    </div>
+    <div class="card">
+      <div class="head"><b>1 · Aurora Glass</b><span class="tag">brand-consistent · glassmorphism</span><a href="variation-1-aurora-glass.html" target="_blank">Open full →</a></div>
+      <div class="frame"><iframe src="variation-1-aurora-glass.html" loading="lazy" title="Aurora Glass"></iframe></div>
+    </div>
+    <div class="card">
+      <div class="head"><b>2 · Bold Type</b><span class="tag">oversized type · action red</span><a href="variation-2-bold-type.html" target="_blank">Open full →</a></div>
+      <div class="frame"><iframe src="variation-2-bold-type.html" loading="lazy" title="Bold Type"></iframe></div>
+    </div>
+    <div class="card">
+      <div class="head"><b>3 · Bento Grid</b><span class="tag">feature-rich · modular</span><a href="variation-3-bento.html" target="_blank">Open full →</a></div>
+      <div class="frame"><iframe src="variation-3-bento.html" loading="lazy" title="Bento Grid"></iframe></div>
+    </div>
+    <div class="card">
+      <div class="head"><b>4 · Cinematic Spotlight</b><span class="tag">agent terminal · dramatic</span><a href="variation-4-spotlight.html" target="_blank">Open full →</a></div>
+      <div class="frame"><iframe src="variation-4-spotlight.html" loading="lazy" title="Cinematic Spotlight"></iframe></div>
+    </div>
+  </div>
+</body>
+</html>

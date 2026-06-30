@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RESCUE — Variation 1 · Aurora Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root { color-scheme: dark; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Sora', system-ui, sans-serif;
+    background: #05060f; color: #e7e9ff; overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .display { font-family: 'Space Grotesk', sans-serif; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  /* aurora background */
+  .aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .aurora span { position: absolute; border-radius: 50%; filter: blur(130px); opacity: 0.5; }
+  .a1 { width: 50vw; height: 50vw; background: radial-gradient(circle,#3b82f6,transparent 60%); top: -12%; left: -10%; animation: drift 22s ease-in-out infinite; }
+  .a2 { width: 45vw; height: 45vw; background: radial-gradient(circle,#e935c1,transparent 60%); bottom: -15%; right: -10%; animation: drift 26s ease-in-out infinite reverse; }
+  .a3 { width: 38vw; height: 38vw; background: radial-gradient(circle,#8b5cf6,transparent 60%); top: 30%; left: 40%; animation: drift 30s ease-in-out infinite; }
+  @keyframes drift { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(6vw,5vh) scale(1.08)} 66%{transform:translate(-5vw,-4vh) scale(.95)} }
+  .glass { background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.09); backdrop-filter: blur(20px) saturate(140%); }
+  .grad-text { background: linear-gradient(120deg,#60a5fa,#a78bfa,#f472b6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  header { position: sticky; top: 0; z-index: 30; }
+  .nav { margin: 18px auto; max-width: 1120px; display: flex; align-items: center; gap: 16px; border-radius: 18px; padding: 12px 18px; }
+  .logo-dot { width: 38px; height: 38px; border-radius: 50%; background: radial-gradient(circle at 35% 30%,#a78bfa,#3b82f6 70%); box-shadow: 0 0 22px rgba(139,92,246,.6); animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1);opacity:.9} 50%{transform:scale(1.08);opacity:1} }
+  .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; font-weight: 600; cursor: pointer; border: none; transition: transform .15s ease, box-shadow .2s ease; text-decoration: none; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { padding: 14px 26px; color: #fff; background: linear-gradient(120deg,#3b82f6,#8b5cf6,#e935c1); background-size: 200% 100%; box-shadow: 0 0 34px rgba(139,92,246,.5); animation: shimmer 3s linear infinite; }
+  @keyframes shimmer { 0%{background-position:0 0} 100%{background-position:200% 0} }
+  .btn-ghost { padding: 13px 22px; color: #e7e9ff; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); }
+  .btn-ghost:hover { border-color: rgba(255,255,255,.3); }
+  section { position: relative; z-index: 1; }
+  .hero { padding: 70px 0 40px; text-align: center; }
+  .pill { display:inline-flex; align-items:center; gap:8px; padding: 7px 14px; border-radius: 999px; font-size: 13px; color:#fca5a5; border:1px solid rgba(239,68,68,.4); background: rgba(239,68,68,.12); }
+  .blink { width:7px;height:7px;border-radius:50%;background:#ef4444; animation: blink 1.1s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+  h1.hero-title { font-size: clamp(38px, 7vw, 76px); line-height: 1.04; font-weight: 800; letter-spacing: -.02em; margin: 22px 0 18px; }
+  .sub { max-width: 620px; margin: 0 auto; font-size: clamp(16px,2.2vw,20px); color: rgba(231,233,255,.65); line-height: 1.6; }
+  .cta-row { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top: 30px; }
+  .hero-orb { width: 150px; height: 150px; margin: 6px auto 0; border-radius: 50%; background: radial-gradient(circle at 34% 30%,#a78bfa,#3b82f6 65%); box-shadow: 0 0 70px rgba(139,92,246,.6), inset 0 0 40px rgba(255,255,255,.15); animation: pulse 3s ease-in-out infinite; }
+  .stats { display:grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin: 54px 0; }
+  .stat { border-radius: 18px; padding: 22px; text-align:center; }
+  .stat b { display:block; font-family:'Space Grotesk'; font-size: 32px; }
+  .stat span { font-size: 13px; color: rgba(231,233,255,.5); }
+  .loop { padding: 30px 0 70px; }
+  .loop h2, .feat h2 { text-align:center; font-family:'Space Grotesk'; font-size: clamp(26px,4vw,40px); font-weight:700; margin-bottom: 12px; }
+  .lead { text-align:center; color: rgba(231,233,255,.55); max-width: 540px; margin: 0 auto 38px; }
+  .loop-grid { display:grid; grid-template-columns: repeat(5,1fr); gap: 12px; }
+  .step { border-radius: 16px; padding: 18px; }
+  .step .n { font-size: 12px; letter-spacing: .12em; color:#a78bfa; font-weight:600; }
+  .step h3 { font-family:'Space Grotesk'; font-size: 17px; margin: 8px 0 6px; }
+  .step p { font-size: 13px; color: rgba(231,233,255,.55); line-height:1.5; }
+  .feat { padding: 10px 0 80px; }
+  .feat-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .card { border-radius: 20px; padding: 24px; transition: transform .25s ease, border-color .25s; }
+  .card:hover { transform: translateY(-6px); border-color: rgba(167,139,250,.5); }
+  .ico { width: 44px; height:44px; border-radius: 12px; display:grid; place-items:center; background: rgba(139,92,246,.16); margin-bottom: 14px; }
+  .ico svg { width: 22px; height:22px; stroke:#c4b5fd; fill:none; stroke-width:1.8; }
+  .card h3 { font-family:'Space Grotesk'; font-size: 18px; margin-bottom: 8px; }
+  .card p { font-size: 14px; color: rgba(231,233,255,.6); line-height:1.6; }
+  .final { text-align:center; padding: 30px 0 90px; }
+  .final .glass { border-radius: 28px; padding: 56px 28px; }
+  .final h2 { font-family:'Space Grotesk'; font-size: clamp(28px,5vw,46px); font-weight:800; margin-bottom: 14px; }
+  footer { border-top: 1px solid rgba(255,255,255,.08); padding: 26px 0; color: rgba(231,233,255,.4); font-size: 13px; text-align:center; position:relative; z-index:1; }
+  @media (max-width: 860px){ .stats{grid-template-columns:repeat(2,1fr)} .loop-grid{grid-template-columns:repeat(2,1fr)} .feat-grid{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important} }
+</style>
+</head>
+<body>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+
+<header>
+  <div class="nav glass wrap">
+    <div class="logo-dot"></div>
+    <strong class="display" style="font-size:18px;letter-spacing:.02em">RESCUE</strong>
+    <span style="color:rgba(231,233,255,.4);font-size:13px;margin-left:2px">The Last-Minute Life Saver</span>
+    <a href="#" class="btn btn-primary" style="margin-left:auto;padding:10px 20px;font-size:14px">Launch app</a>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <div class="hero-orb"></div>
+  <div style="margin-top:26px"><span class="pill"><span class="blink"></span> Deadline in 47 minutes — agent is triaging</span></div>
+  <h1 class="hero-title">Beat the deadline.<br><span class="grad-text">Let the agent take over.</span></h1>
+  <p class="sub">RESCUE is an AI productivity companion that doesn't just remind you — it perceives, reasons, plans, and acts so the work actually gets done before time runs out.</p>
+  <div class="cta-row">
+    <a href="#" class="btn btn-primary">Start rescuing my day</a>
+    <a href="#loop" class="btn btn-ghost">See how the agent thinks</a>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="stats">
+    <div class="stat glass"><b class="grad-text">5</b><span>agent phases per task</span></div>
+    <div class="stat glass"><b class="grad-text">&lt;1s</b><span>live re-prioritization</span></div>
+    <div class="stat glass"><b class="grad-text">100</b><span>urgency scoring scale</span></div>
+    <div class="stat glass"><b class="grad-text">24/7</b><span>deadline watch</span></div>
+  </div>
+</section>
+
+<section id="loop" class="loop wrap">
+  <h2>One agent loop. <span class="grad-text">Zero missed deadlines.</span></h2>
+  <p class="lead">Every task runs through a transparent reasoning loop — you always see why the agent acts.</p>
+  <div class="loop-grid">
+    <div class="step glass"><div class="n">01 · PERCEIVE</div><h3>Capture</h3><p>Voice or type a task; it's scored instantly.</p></div>
+    <div class="step glass"><div class="n">02 · REASON</div><h3>Rank</h3><p>Deadline pressure + effort + importance.</p></div>
+    <div class="step glass"><div class="n">03 · PLAN</div><h3>Schedule</h3><p>Hour-by-hour rescue plan with breaks.</p></div>
+    <div class="step glass"><div class="n">04 · ACT</div><h3>Execute</h3><p>Drafts, decomposes, nudges you to start.</p></div>
+    <div class="step glass"><div class="n">05 · REFLECT</div><h3>Learn</h3><p>Reviews the day, improves tomorrow.</p></div>
+  </div>
+</section>
+
+<section class="feat wrap">
+  <h2>Built to make you <span class="grad-text">actually finish</span></h2>
+  <p class="lead">Powered by Gemini, designed for the moments when the clock is winning.</p>
+  <div class="feat-grid">
+    <div class="card glass"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></div><h3>Panic / Rescue Mode</h3><p>Under an hour to a deadline, the agent takes charge and surfaces the single most critical next action.</p></div>
+    <div class="card glass"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 17l6-6 4 4 6-7"/></svg></div><h3>Smart prioritization</h3><p>Eisenhower quadrants plus AI urgency scoring rank everything live as you add and complete tasks.</p></div>
+    <div class="card glass"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/><path d="M9 21h6"/></svg></div><h3>Personalized coaching</h3><p>Learns your productive hours and lateness patterns to tailor every plan and recommendation.</p></div>
+  </div>
+</section>
+
+<section class="final wrap">
+  <div class="glass">
+    <h2>Your deadlines don't stand a chance.</h2>
+    <p class="sub" style="margin-bottom:28px">Add one task and watch RESCUE build your escape plan in seconds.</p>
+    <a href="#" class="btn btn-primary">Launch RESCUE free</a>
+  </div>
+</section>
+
+<footer>RESCUE — The Last-Minute Life Saver · Built with Gemini · VIBE2SHIP</footer>
+</body>
+</html>
