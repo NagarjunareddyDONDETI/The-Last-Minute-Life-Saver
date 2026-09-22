@@ -17,20 +17,20 @@ export function PrimaryPill({
 }: {
   children: ReactNode
   onClick?: () => void
-  icon?: string
+  icon?: ReactNode
   disabled?: boolean
   className?: string
 }) {
   return (
     <motion.button
-      whileHover={{ scale: 1.04, y: -1 }}
-      whileTap={{ scale: 0.96 }}
+      whileHover={{ scale: 1.03, y: -1 }}
+      whileTap={{ scale: 0.97 }}
       onClick={onClick}
       disabled={disabled}
-      className={`shimmer-pill relative inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold text-white shadow-glow disabled:opacity-50 ${className}`}
+      className={`shimmer-pill relative inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white shadow-glow disabled:opacity-50 transition-shadow ${className}`}
     >
-      {icon && <Icon name={icon} className="text-[20px]" />}
-      <span>{children}</span>
+      {typeof icon === 'string' ? <Icon name={icon} className="text-[20px]" /> : icon}
+      <span className="leading-none">{children}</span>
     </motion.button>
   )
 }
@@ -45,23 +45,23 @@ export function GhostButton({
 }: {
   children?: ReactNode
   onClick?: () => void
-  icon?: string
+  icon?: ReactNode
   active?: boolean
   className?: string
 }) {
   return (
     <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
       onClick={onClick}
-      className={`inline-flex items-center gap-2 rounded-xl border px-3.5 py-2 text-sm font-medium transition-colors ${
+      className={`inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium transition-colors ${
         active
           ? 'border-neon-violet/60 bg-neon-violet/15 text-white shadow-glow'
-          : 'border-white/10 bg-white/[0.03] text-white/70 hover:text-white hover:border-white/25'
+          : 'border-white/10 bg-white/[0.04] text-white/80 hover:text-white hover:border-white/25 hover:bg-white/[0.08]'
       } ${className}`}
     >
-      {icon && <Icon name={icon} className="text-[18px]" />}
-      {children && <span>{children}</span>}
+      {typeof icon === 'string' ? <Icon name={icon} className="text-[18px]" /> : icon}
+      {children && <span className="leading-none">{children}</span>}
     </motion.button>
   )
 }

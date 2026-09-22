@@ -33,10 +33,20 @@ function OrbFallback({ panic = false, size = 120 }: OrbProps) {
   )
 }
 
-export default function AgentOrbLazy(props: OrbProps) {
+export default function AgentOrbLazy({
+  thinking = false,
+  panic = false,
+  size = 120,
+}: OrbProps) {
   return (
-    <Suspense fallback={<OrbFallback {...props} />}>
-      <OrbCanvas thinking={props.thinking ?? false} panic={props.panic ?? false} />
-    </Suspense>
+    <div
+      style={{ width: size, height: size }}
+      className="pointer-events-none relative select-none"
+      aria-hidden
+    >
+      <Suspense fallback={<OrbFallback panic={panic} size={size} />}>
+        <OrbCanvas thinking={thinking} panic={panic} />
+      </Suspense>
+    </div>
   )
 }
